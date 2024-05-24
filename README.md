@@ -72,10 +72,10 @@ II.
 
 5. Според Multiple Condition ги испитуваме сите можни комбинации на условот if (item.getPrice() > 300 && item.getDiscount() > 0 && item.getBarcode().charAt(0) == '0'). Овој услов се состои од 3 предуслови, кои треба да ги испитаме во сите можни комбинации (TTT, TTF, TFT, TFF, FTT, FFT, FTF, FFF).
 
-| item.getPrice() > 300  |    item.getDiscount() > 0   |   item.getBarcode().charAt(0) == '0'   |   RESULT  |
-|------------------------|-----------------------------|----------------------------------------|-----------|
-| T                      |     T                       |     T	                                |   T       |  price = 400, discount = 5, code = "0147"
-| T	                     |     T                       |     F                                  |   F       |  price = 400, discount = 5, code = "147"
-| T	                     |     F                       |     X                                  |   F       |  price = 400, discount = -5, code = X
-| F                      |     X                       |     X                                  |   F       |  price = 299, discount = X, code = X
+| item.getPrice() > 300  |    item.getDiscount() > 0   |   item.getBarcode().charAt(0) == '0'   |   RESULT  |test case|
+|------------------------|-----------------------------|----------------------------------------|-----------|--|
+| T                      |     T                       |     T	                                |   T       |  price = 400, discount = 5, code = "0147"|
+| T	                     |     T                       |     F                                  |   F       |  price = 400, discount = 5, code = "147"|
+| T	                     |     F                       |     X                                  |   F       |  price = 400, discount = -5, code = X|
+| F                      |     X                       |     X                                  |   F       |  price = 299, discount = X, code = X|
 
