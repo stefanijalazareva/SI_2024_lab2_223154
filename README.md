@@ -140,13 +140,10 @@ boolean result = SILab2.checkCart(allItems, payment); //false
 
 5. Според Multiple Condition ги испитуваме сите можни комбинации на условот if (item.getPrice() > 300 && item.getDiscount() > 0 && item.getBarcode().charAt(0) == '0'). Овој услов се состои од 3 предуслови, кои треба да ги испитаме во сите можни комбинации (TTT, TTF, TFT, TFF, FTT, FFT, FTF, FFF).
 
-item.getPrice() > 300      item.getDiscount() > 0      item.getBarcode().charAt(0) == '0'      RESULT
-
-T                            T                             T	                                    T
-
-T	                           T                             F                                      F
-
-T	                           F                             X                                      F
-
-F                            X                             X                                      F
+| item.getPrice() > 300  |    item.getDiscount() > 0   |   item.getBarcode().charAt(0) == '0'   |   RESULT  |
+|------------------------|-----------------------------|----------------------------------------|-----------|
+| T                      |     T                       |     T	                                |   T       |
+| T	                     |     T                       |     F                                  |   F       |
+| T	                     |     F                       |     X                                  |   F       |
+| F                      |     X                       |     X                                  |   F       |
 
