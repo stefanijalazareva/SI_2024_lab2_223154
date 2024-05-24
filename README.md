@@ -29,112 +29,44 @@ II.
 
 Критериумот Every Branch треба да ги покрие сите гранки во графот. Со следниве тест случаи ги покриваме сите гранки во графот:
 
-Тест случај 1: allitems == null
-
-List<Item> allItems = null;
-
-int payment = 100;
-
-SILab2.checkCart(allItems, payment); //RuntimeException("allItems list can't be null!")
-
-
-Тест случај 2: item.getName() == null
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item(null, "123456", 100, 0.1f));
-
-int payment = 100;
-
-boolean result = SILab2.checkCart(allItems, payment); //name will be set to "unknown"
-
-
-Тест случај 3: item.getName.length() == 0
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("", "123456", 100, 0.1f));
-
-int payment = 100;
-
-boolean result = SILab2.checkCart(allItems, payment); //name will be set to "unknown"
-
-
-Тест случај 4: item.getBarcode() == null
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", null, 100, 0.1f));
-
-int payment = 100;
-
-SILab2.checkCart(allItems, payment); //RuntimeException("No barcode!")
-
-
-Тест случај 5: item.getBarcode да има невалиден карактер
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "12345a", 100, 0.1f));
-
-int payment = 100;
-
-SILab2.checkCart(allItems, payment); //RuntimeException("Invalid character in item barcode!")
-
-
-Тест случај 6: item.getDiscount() > 0
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "123456", 100, 0.1f));
-
-int payment = 90;
-
-boolean result = SILab2.checkCart(allItems, payment); //sum = 10.0
-
-
-Тест случај 7: item.getDiscount()<=0
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "123456", 100, 0.0f));
-
-int payment = 100;
-
-boolean result = SILab2.checkCart(allItems, payment); //sum = 100
-
-
-Тест случај 8: item.getPrice()>300 && item.getDiscount()>0 && item.getBarcode().charAt(0)=='0'
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "012345", 400, 0.1f));
-
-int payment = 370;
-
-boolean result = SILab2.checkCart(allItems, payment); //sum = 10.0 -> sum -= 30
-
-
-Тест случај 9: sum<=payment
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "123456", 100, 0.1f));
-
-int payment = 10;
-
-boolean result = SILab2.checkCart(allItems, payment); //true
-
-
-Тест случај 10: sum>payment
-
-List<Item> allItems = new ArrayList<>();
-
-allItems.add(new Item("item1", "123456", 100, 0.1f));
-
-int payment = 5;
-
-boolean result = SILab2.checkCart(allItems, payment); //false
+| Branches  | allitems=[], payment=X| allitems=[null, "266266", "100", "0"], payment=150 |    allitems=["Test7", "266c", "55", 0], payment=100   |   allitems=["Test7", null, X, X], payment=X   |   allitems=["Test7", "2662", "355", 10], payment=150  |  |
+|-----------|------------------------|----------------------------------------|-------------------------------------------------------|----------------------------------------|-----------|--|
+|1-2| 1 |0     |0|0| 0 |  TRUE |
+|1-3| 0 |1     |1|1| 1 |  TRUE|
+|2-24| 1 |0    |0|0| 0 |  TRUE|
+|3-4.1| 0 |1   |1|1| 1 |  TRUE|
+|4.1-4.2| 0 |1 |1|1| 1 |  TRUE |
+|4.2-5|   0 |1 |1|1| 1 |  TRUE|
+|4.2-21|  0 |1 |0|0| 1 |  TRUE|
+|4.3-4.2| 0 |1 |0|0| 1 |  TRUE|
+|5-6|    0  |1 |1|1| 1 |  TRUE|
+|6-7|    0  |1 |0|0| 0 |  TRUE|
+|6-8|    0  |0 |1|1| 1 |  TRUE |
+|7-8|  0    |1 |0|0| 0 |  TRUE|
+|8-9|   0   |1 |1|0| 1 |  TRUE|
+|8-18|  0   |0 |0|1| 0 |  TRUE|
+|9-10.1| 0  |1 |1|0| 1 |  TRUE|
+|10.1-10.2| 0|1|1|0| 1 |  TRUE|
+|10.2-11|  0 |1|1|0| 1 |  TRUE|
+|10.2-14|  0|1 |0|0| 1 |  TRUE |
+|10.3-10.2| 0|1|1|0| 1 |  TRUE|
+|11-12|   0  |1|1|0| 1 |  TRUE|
+|12-10.3|  0 |1|1|0| 1 |  TRUE|
+|12-13|    0 |0|1|0| 0 |  TRUE |
+|13-24|  0   |0|1|0| 0 |  TRUE|
+|14-15|   0  |0|0|0| 1 |  TRUE|
+|14-16|   0  |1|0|0| 0 |  TRUE|
+|15-17|   0 |0 |0|0| 1 |  TRUE |
+|16-17|  0 |1  |0|0| 0 |  TRUE|
+|17-19|0   |1  |0|0| 1 |  TRUE|
+|18-24| 0  |0  |0|1| 0 |  TRUE |
+|19-20|  0 |0  |0|0| 1 |  TRUE|
+|19-4.3|  0 |1 |0|0| 0 |  TRUE |
+|20-4.3|  0 |0 |0|0| 1 |  TRUE|
+|21-22|  0  |1 |0|0| 0 |  TRUE |
+|21-23| 0  |0  |0|0| 1 |  TRUE|
+|22-24| 0   |1 |0|0| 0 |  TRUE|
+|23-24| 0   |0 |0|0| 1 |  TRUE |
 
 
 
@@ -142,8 +74,8 @@ boolean result = SILab2.checkCart(allItems, payment); //false
 
 | item.getPrice() > 300  |    item.getDiscount() > 0   |   item.getBarcode().charAt(0) == '0'   |   RESULT  |
 |------------------------|-----------------------------|----------------------------------------|-----------|
-| T                      |     T                       |     T	                                |   T       |
-| T	                     |     T                       |     F                                  |   F       |
-| T	                     |     F                       |     X                                  |   F       |
-| F                      |     X                       |     X                                  |   F       |
+| T                      |     T                       |     T	                                |   T       |  price = 400, discount = 5, code = "0147"
+| T	                     |     T                       |     F                                  |   F       |  price = 400, discount = 5, code = "147"
+| T	                     |     F                       |     X                                  |   F       |  price = 400, discount = -5, code = X
+| F                      |     X                       |     X                                  |   F       |  price = 299, discount = X, code = X
 
