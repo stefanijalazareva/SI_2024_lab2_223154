@@ -4,7 +4,7 @@ Stefanija Lazareva 223154
 
 2. CFD
 
-![Control Flow Diagram](CFD.png)
+![Control Flow Diagram](CFGdrawio.png)
 
 
 3. Цикломатска комплексност
